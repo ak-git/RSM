@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Alexander",
            family = "Kobelev",
            role = c("aut", "cre"),
-           email = "mailto:ak.mail.ru@gmail.com",
+           email = "ak.mail.ru@gmail.com",
            comment = c(ORCID = "0000-0001-6715-7668"))
 Description: Resistivity Sounding Measurements
 License: MIT
