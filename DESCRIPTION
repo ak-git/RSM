@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "ak.mail.ru@gmail.com",
            comment = c(ORCID = "0000-0001-6715-7668"))
-Description: Resistivity Sounding Measurements
-License: MIT
+Description: Resistivity Sounding Measurements.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
