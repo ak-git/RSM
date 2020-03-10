@@ -1,4 +1,3 @@
-.Rproj.user
 # osx noise
 .DS_Store
 profile
@@ -23,3 +22,5 @@ out/*
 .idea/workspace.xml
 .idea/libraries/*
 .gradle
+.Rhistory
+.Rproj.user
