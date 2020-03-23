@@ -11,7 +11,7 @@ relErrorFactor <- function(x) {
   return(layer1RelError(x, 1.0, relError) / relError)
 }
 
-source('~/Documents/Source Code/RSM/R/rsm.R', echo = TRUE)
+source('R/rsm.R', echo = TRUE)
 
 seq(0.2, 5, 0.01) -> sToL
 sapply(sToL, relErrorFactor) -> y
