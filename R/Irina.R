@@ -1,7 +1,9 @@
 library(signal)
 Fd <- 100
 n <- 100
-bf <- remez(n = n, c(0.05, 0.95), c(1, 1), ftype = 'hilbert')
+#bf <- remez(n = n, c(0.05, 0.95), c(1, 1), ftype = 'hilbert')
+bf <- read.table(file = "hilbert.csv")
+bf <- Arma(b = as.numeric(bf$V1), a = c(1))
 freqz(bf)
 
 t <- seq(0, 1, by = 1 / Fd)
