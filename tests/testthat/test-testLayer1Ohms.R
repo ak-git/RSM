@@ -16,3 +16,14 @@ test_that("layer1Inverse", {
   expect_equal(round(layer1Inverse(30, 60, 9.903), 3), 0.7)
   expect_equal(round(layer1Inverse(60, 30, 9.903), 3), 0.7)
 })
+
+
+test_that("layer2Ohms", {
+  expect_equal(round(layer2Ohms(8.0, 1.0, 10.0, 20.0, 10.0), 3), 309.342)
+  expect_equal(round(layer2Ohms(8.0, 1.0, 10.0, 30.0, 90.0), 3), 8.815)
+  expect_equal(round(layer2Ohms(8.0, 1.0, 50.0, 10.0, 20.0), 3), 339.173)
+  expect_equal(round(layer2Ohms(8.0, 1.0, 50.0, 30.0, 90.0), 3), 38.858)
+
+  expect_equal(round(layer2Ohms(1.0, 1.0, 0.0, 20.0, 40.0), 3), 21.221)
+  expect_equal(round(layer2Ohms(0.7, Inf, 5.0, 10.0, 30.0), 3), 30.971)
+})

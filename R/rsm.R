@@ -40,3 +40,35 @@ layer1Inverse <- function(smm, lmm, ohms) {
   (ohms * pi) / (2.0 / abs(l - s) - 2.0 / (l + s)) -> rho;
   return(rho);
 }
+
+layer2Ohms <- function(rho1, rho2, hmm, smm, lmm) {
+  if (is.infinite(rho2)) {
+    1 -> k
+  }
+  else {
+    (rho2 - rho1) / (rho2 + rho1) -> k
+  }
+
+  mmToSI(hmm) -> h;
+  mmToSI(smm) -> s;
+  mmToSI(lmm) -> l;
+
+  mp <- function(ls) {
+    return(1 / abs(ls))
+  }
+
+  MP <- function(ls, n) {
+    ls ^ 2 + (4 * n * h) ^ 2 -> result
+    return(1 / sqrt(result))
+  }
+
+  0 -> R
+  for (n in 1:4096) {
+    R + (k ^ n) * (MP(l - s, n) - MP(l + s, n)) -> R
+  }
+
+  mp(l - s) - mp(l + s) + 2 * R -> R
+
+  2 * (rho1 / pi) * R -> R
+  return(R)
+}
