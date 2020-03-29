@@ -6,7 +6,6 @@ test_that("layer1RelError", {
 })
 
 test_that("relErrorFactor", {
-  plotLayer1RelError()
   expect_equal(round(relErrorFactor(0.5), 1), 6)
   expect_equal(round(relErrorFactor(sqrt(2) - 1), 1), 5.8)
   expect_equal(round(relErrorFactor(sqrt(2) + 1), 1), 5.8)

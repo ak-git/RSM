@@ -2,6 +2,16 @@ mmToSI <- function(mm) {
   return(mm / 1000.0);
 }
 
+rhoToK <- function(rho1, rho2) {
+  if (is.infinite(rho2)) {
+    1 -> k
+  }
+  else {
+    (rho2 - rho1) / (rho2 + rho1) -> k
+  }
+  return(k)
+}
+
 layer1Ohms <- function(rho, smm, lmm = NULL) {
   R <- function(rho, s, l) {
     return((rho / pi) * (2.0 / abs(l - s) - 2.0 / (l + s)))
@@ -42,13 +52,7 @@ layer1Inverse <- function(smm, lmm, ohms) {
 }
 
 layer2Ohms <- function(rho1, rho2, hmm, smm, lmm) {
-  if (is.infinite(rho2)) {
-    1 -> k
-  }
-  else {
-    (rho2 - rho1) / (rho2 + rho1) -> k
-  }
-
+  rhoToK(rho1, rho2) -> k;
   mmToSI(hmm) -> h;
   mmToSI(smm) -> s;
   mmToSI(lmm) -> l;
@@ -62,10 +66,7 @@ layer2Ohms <- function(rho1, rho2, hmm, smm, lmm) {
     return(1 / sqrt(result))
   }
 
-  0 -> R
-  for (n in 1:4096) {
-    R + (k ^ n) * (MP(l - s, n) - MP(l + s, n)) -> R
-  }
+  sum(sapply(1:4096, function(x) ((k ^ x) * (MP(l - s, x) - MP(l + s, x))))) -> R
 
   mp(l - s) - mp(l + s) + 2 * R -> R
 
