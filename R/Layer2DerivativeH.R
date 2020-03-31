@@ -35,7 +35,7 @@ plot(hToL, y1, type = "l", lwd = 2, log = "x", ylim = c(-3.5, 3.5), lty = 1,
 )
 lines(hToL, y2, type = "l", lwd = 2, lty = 5)
 abline(h = 0, col = 'black', lty = 1, lwd = 0.5)
-legend("right", inset = 0.01, box.col = 'white',
+legend("topright", inset = 0.01, box.col = 'white',
        title = expression(bold(frac(s, L) == frac(1, 2))),
        legend = c(
          expression(bold(frac(rho[1], rho[2]) == 2)),
