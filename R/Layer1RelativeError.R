@@ -1,3 +1,4 @@
+source("R/rsm.R")
 layer1RelError <- function(smm, lmm, relError) {
   abs(smm) -> smm
   abs(lmm) -> lmm
