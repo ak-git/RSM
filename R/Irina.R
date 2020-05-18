@@ -1,13 +1,15 @@
 library(signal)
-Fd <- 100
-n <- 100
-#bf <- remez(n = n, c(0.05, 0.95), c(1, 1), ftype = 'hilbert')
-bf <- read.table(file = "hilbert.csv")
-bf <- Arma(b = as.numeric(bf$V1), a = c(1))
+Fd <- 10
+n <- 20
+bf <- remez(n = n, c(0.05, 0.95), c(1, 1), ftype = 'hilbert')
+write.table(as.numeric(bf), file = 'hilbert.csv', row.names = FALSE, col.names = FALSE)
 freqz(bf)
 
-t <- seq(0, 1, by = 1 / Fd)
-x <- cos(2 * pi * (t) * 10 * t)
+ohms <- read.csv2(file = 'ak.txt', header = FALSE)$V1 / 1000.0
+t <- seq(0, (length(ohms) - 1) / Fd, by = 1 / Fd)
+x <- ohms
+plot(t, x, type = 'l')
+
 z <- filter(bf, x)
 
 lenT <- length(t)
@@ -24,4 +26,4 @@ par(mfrow = c(2, 1))
 plot(t, x, type = "l")
 lines(t, z, col = "red")
 lines(t, envelope, col = 'green')
-plot(t, freq, type = 'l', col = 'blue', ylim = range(0, 25))
+plot(t, freq, type = 'l', col = 'blue', ylim = range(0, 2))
