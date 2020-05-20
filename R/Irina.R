@@ -1,5 +1,5 @@
 library(signal)
-Fd <- 10
+Fd <- 2.5
 n <- 20
 bf <- remez(n = n, c(0.05, 0.95), c(1, 1), ftype = 'hilbert')
 write.table(as.numeric(bf), file = 'hilbert.csv', row.names = FALSE, col.names = FALSE)
