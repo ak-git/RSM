@@ -1,10 +1,10 @@
 dRdHLR <- function(k, hToL, sToL) {
-  sum(sapply(1:4096, function(x) {
+  sum(sapply(1:MAX_SUM, function(x) {
     x ^ 2 * k ^ x * (-MP(1 - sToL, x, hToL) ^ 3 + MP(1 + sToL, x, hToL) ^ 3) -> result
     return(result)
   })) -> nom
 
-  sum(sapply(1:4096, function(x) {
+  sum(sapply(1:MAX_SUM, function(x) {
     k ^ x * (MP(1 - sToL, x, hToL) - MP(1 + sToL, x, hToL)) -> result
     return(result)
   })) -> den

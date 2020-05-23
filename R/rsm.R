@@ -60,13 +60,15 @@ MP <- function(ls, n, h) {
   return(2 / sqrt(result))
 }
 
+MAX_SUM <- 4096
+
 layer2Ohms <- function(rho1, rho2, hmm, smm, lmm) {
   rhoToK(rho1, rho2) -> k
   mmToSI(hmm) -> h
   mmToSI(smm) -> s
   mmToSI(lmm) -> l
 
-  sum(sapply(1:4096, function(x) ((k ^ x) * (MP(l - s, x, h) - MP(l + s, x, h))))) -> R
+  sum(sapply(1:MAX_SUM, function(x) ((k ^ x) * (MP(l - s, x, h) - MP(l + s, x, h))))) -> R
 
   mp(l - s) - mp(l + s) + 2 * R -> R
 
