@@ -1,12 +1,3 @@
-mp <- function(ls) {
-  return(1 / abs(ls))
-}
-
-MP <- function(ls, n, hToL) {
-  ls ^ 2 + (4 * n * hToL) ^ 2 -> result
-  return(1 / sqrt(result))
-}
-
 dRdrho2N <- function(k, hToL, sToL) {
   sum(sapply(1:4096, function(x) {
     x * k ^ (x - 1) * (MP(1 - sToL, x, hToL) - MP(1 + sToL, x, hToL)) -> result
