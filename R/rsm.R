@@ -56,7 +56,7 @@ layer1Inverse <- function(smm, lmm, ohms) {
 }
 
 MP <- function(ls, n, h) {
-  ls ^ 2 + (4 * n * h) ^ 2 -> result
+  ls^2 + (4 * n * h)^2 -> result
   return(2 / sqrt(result))
 }
 
@@ -68,7 +68,7 @@ layer2Ohms <- function(rho1, rho2, hmm, smm, lmm) {
   mmToSI(smm) -> s
   mmToSI(lmm) -> l
 
-  sum(sapply(1:MAX_SUM, function(x) ((k ^ x) * (MP(l - s, x, h) - MP(l + s, x, h))))) -> R
+  sum(sapply(1:MAX_SUM, function(x) ((k^x) * (MP(l - s, x, h) - MP(l + s, x, h))))) -> R
 
   mp(l - s) - mp(l + s) + 2 * R -> R
 
