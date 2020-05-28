@@ -6,7 +6,7 @@ layer1RelativeRhoErrorIfLayer2Model <- function(rho1, rho2, hmm, smm, lmm) {
   mmToSI(lmm) -> l
   k <- rhoToK(rho1, rho2)
 
-  err <- function (expected) {
+  err <- function(expected) {
     sum(sapply(1:MAX_SUM, function(x) ((k^x) * (MP(l - s, x, h) - MP(l + s, x, h))))) -> result
     actual <- rho1 * (1.0 + 2.0 / (mp(l - s) - mp(l + s)) * result)
     return(abs(actual - expected) / expected)
@@ -24,9 +24,12 @@ plot(hToL, y1, type = "l", lwd = 2, ylim = c(0, 1),
      ylab = expression(bold(delta ~ rho))
 )
 
-rho1ToRho2 <- 100
-sToL <- 0.1
-sapply(hToL, function(x) (layer1RelativeRhoErrorIfLayer2Model(rho1ToRho2, 1.0, x, sToL, 1.0))) -> y2
+library("VGAM")
+layer1RelativeRhoErrorIfLayer2Model2 <- function(hToL) {
+  return(zeta(3) / (32 * hToL ^ 3))
+}
+
+sapply(hToL, layer1RelativeRhoErrorIfLayer2Model2) -> y2
 lines(hToL, y2, type = "l", lwd = 2, lty = 5)
 abline(h = 0.0, col = 'black', lty = 1, lwd = 0.5)
 legend("topright", box.col = 'white', inset = 0.2,
