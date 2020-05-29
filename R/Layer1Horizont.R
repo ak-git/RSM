@@ -24,12 +24,24 @@ plot(hToL, y1, type = "l", lwd = 2, ylim = c(0, 1),
      ylab = expression(bold(delta ~ rho))
 )
 
-library("VGAM")
-layer1RelativeRhoErrorIfLayer2Model2 <- function(hToL) {
-  return(zeta(3) / (32 * hToL ^ 3))
+layer1RelativeRhoErrorIfLayer2Model2 <- function(hmm, smm, lmm) {
+  mmToSI(hmm) -> h
+  mmToSI(smm) -> s
+  mmToSI(lmm) -> l
+
+  invHypot <- function(x, y) {
+    result <- sqrt(x^2 + y^2)
+    return(1 / result)
+  }
+
+  sToL <- s / l
+  hToL <- h / l
+  sum(sapply(1:MAX_SUM, function(x) (invHypot(1 - sToL, 4 * x * hToL) - invHypot(1 + sToL, 4 * x * hToL)))) -> result
+  actual <- (1 - sToL^2) / sToL * result
+  return(abs(actual))
 }
 
-sapply(hToL, layer1RelativeRhoErrorIfLayer2Model2) -> y2
+sapply(hToL, function(x) (layer1RelativeRhoErrorIfLayer2Model2(x, sToL, 1.0))) -> y2
 lines(hToL, y2, type = "l", lwd = 2, lty = 5)
 abline(h = 0.0, col = 'black', lty = 1, lwd = 0.5)
 legend("topright", box.col = 'white', inset = 0.2,
