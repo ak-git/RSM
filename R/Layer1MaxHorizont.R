@@ -21,12 +21,12 @@ sapply(sToL, function (x) (hToL_Horizont(x, deltaL))) -> y2
 lines(sToL, y2, type = "l", lwd = 2, lty = 5)
 text(1 / 3, 0.45, expression(bold(frac(s, L) == frac(1, 3))), pos = 2, srt = 0)
 
-legend("topright", inset = 0.01, box.col = 'black',
+legend("top", box.col = 'black',
        legend = c(
          expression(bold(delta ~ L == '0,001')),
          expression(bold(delta ~ L == '0,01'))
        ),
-       lty = c(1, 5), lwd = c(1, 1), horiz = F, y.intersp = 4, x.intersp = 2
+       lty = c(1, 5), lwd = c(1, 1), horiz = F
 )
 
 exp(seq(log(0.001), log(0.1), length.out = 100)) -> deltaL
@@ -38,13 +38,9 @@ plot(deltaL, y, type = "l", lwd = 2, ylim = c(0.4, 1.8), log = "xy",
 abline(v = c(0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1), col = 'black', lty = 1, lwd = 0.5)
 abline(h = c(0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.6, 1.8), col = 'black', lty = 1, lwd = 0.5)
 
-sapply(deltaL, function (x) (hToL_Horizont(1 / 2, x))) -> y2
-lines(deltaL, y2, type = "l", lwd = 2, lty = 5)
-
-legend("topright", inset = 0.01, box.col = 'black',
+legend("top", box.col = 'black',
        legend = c(
-         expression(bold(frac(s, L) == frac(1, 3))),
-         expression(bold(frac(s, L) == frac(1, 2)))
+         expression(bold(frac(s, L) == frac(1, 3)))
        ),
-       lty = c(1, 5), lwd = c(1, 1), horiz = F, y.intersp = 4, x.intersp = 2
+       lty = c(1), lwd = c(1), horiz = F
 )
