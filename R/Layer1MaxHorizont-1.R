@@ -8,7 +8,7 @@ hToL_Horizont2 <- function (sToL, deltaL) {
   rho1ToRho2 <- 0.5
   k <- (1 - rho1ToRho2) / (1 + rho1ToRho2)
   sum(sapply(1:1024, function(n) (k^n / n^3))) -> result
-  return((sToL * (1 - sToL) ^ 2 * result / (32 * deltaL)) ^ (1 / 3))
+  return((abs(sToL * (1 - sToL) ^ 2 * result / (32 * deltaL))) ^ (1 / 3))
 }
 
 seq(0, 1, length.out = 100) -> sToL
@@ -30,8 +30,8 @@ text(1 / 3, 0.45, expression(bold(frac(s, L) == frac(1, 3))), pos = 2, srt = 0)
 
 legend("topright", box.col = 'black',
        legend = c(
-         expression(bold(frac(rho ~ 1, rho ~ 2) == '0')),
-         expression(bold(frac(rho ~ 1, rho ~ 2) == '2'))
+         expression(bold(rho[2] == infinity)),
+         expression(bold(frac(rho[1], rho[2]) == '2'))
        ),
        lty = c(1, 5), lwd = c(1, 1), horiz = F
 )

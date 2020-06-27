@@ -36,7 +36,7 @@ abline(h = 0.02)
 legend("top", box.col = 'black',
        legend = c(
          expression(bold(frac(s, L) == frac(1, 3))),
-         expression(bold(frac(rho ~ 1, rho ~ 2) == frac(10, 1)))
+         expression(bold(frac(rho[1], rho[2]) == frac(10, 1)))
        ),
        lty = c(1, 5), lwd = c(1, 1), horiz = F
 )
