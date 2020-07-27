@@ -43,7 +43,7 @@ text(x = 0.1, y = 6 * deltaL + 1, expression(delta ~ rho[1] == frac(1 + over(s, 
 text(x = 0.1, y = 6 * deltaL + 1 + 0.1, expression(delta ~ L == frac('0,1 mm', '30 mm')), pos = 3, srt = 0)
 
 text(x = hToL_Horizont(deltaL = deltaL, k = rhoToK(1, 2)) - 0.05, y = 1.2,
-     expression(frac(h, L) == frac(1, 6) %.% sqrt(frac(abs(sum(frac(k^n, n^3), n == 1, n)), delta ~ L), 3) ~ '= 0.785'),
+     expression(frac(h, L) == frac(1, 6) %.% sqrt(frac(abs(sum(frac(k^n, n^3), n == 1, infinity)), delta ~ L), 3) ~ '= 0.785'),
      pos = 3, srt = 90)
 text(x = hToL_Horizont(deltaL = deltaL) + 0.1, y = 1.2,
      expression(frac(h, L) == frac(1, 6) %.% sqrt(frac(zeta(3), delta ~ L), 3) ~ '= 1,185'),
