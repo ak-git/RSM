@@ -17,6 +17,7 @@ mp <- function(ls) {
 }
 
 layer1Ohms <- function(rho, smm, lmm = NULL) {
+
   R <- function(rho, s, l) {
     return((rho / pi) * (mp(l - s) - mp(l + s)))
   }

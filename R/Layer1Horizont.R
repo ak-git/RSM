@@ -11,6 +11,7 @@ layer1RelativeRhoErrorIfLayer2Model <- function(rho1, rho2, hmm, smm, lmm) {
     actual <- rho1 * (1.0 + 2.0 / (mp(l - s) - mp(l + s)) * result)
     return(abs(actual - expected) / expected)
   }
+
   return(err(rho1))
 }
 
@@ -25,6 +26,7 @@ plot(hToL, y1, type = "l", lwd = 2, log = "xy",
 )
 
 layer1RelativeRhoErrorIfLayer2Model2 <- function(hToL, sToL) {
+
   invHypot <- function(x, y) {
     result <- sqrt(x^2 + y^2)
     return(1 / result)
@@ -36,6 +38,7 @@ layer1RelativeRhoErrorIfLayer2Model2 <- function(hToL, sToL) {
 }
 
 library("VGAM")
+
 layer1RelativeRhoErrorIfLayer2Model3 <- function(hToL, sToL) {
   return((1 - sToL^2) * zeta(3) / (32 * hToL^3))
 }

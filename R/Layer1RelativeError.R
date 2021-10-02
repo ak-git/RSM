@@ -1,4 +1,5 @@
 source("R/rsm.R")
+
 layer1RelError <- function(smm, lmm, relError) {
   abs(smm) -> smm
   abs(lmm) -> lmm
@@ -19,7 +20,7 @@ sapply(sToL, relErrorFactor) -> y
 par(mar = c(5, 6, 1, 1))
 plot(sToL, y, type = "l", lwd = 2, ylim = c(5, 20), log = 'xy',
      xlab = expression(bold(frac(s, L))),
-     ylab = expression(bold(frac(delta~rho, delta~L)))
+     ylab = expression(bold(frac(delta ~ rho, delta ~ L)))
 )
 sqrt(2) - 1 -> xmin1
 sqrt(2) + 1 -> xmin2

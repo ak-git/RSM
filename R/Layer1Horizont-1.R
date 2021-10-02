@@ -11,6 +11,7 @@ layer1RelativeRhoErrorIfLayer2Model <- function(rho1, rho2, hmm, smm, lmm) {
     actual <- rho1 * (1.0 + 2.0 / (mp(l - s) - mp(l + s)) * result)
     return(abs(actual - expected) / expected)
   }
+
   return(err(rho1))
 }
 
@@ -23,6 +24,7 @@ plot(hToL, y1, type = "l", lwd = 2, log = "xy",
      xlab = expression(bold(frac(h, L))),
      ylab = expression(bold(delta ~ rho))
 )
+
 layer1RelativeRhoErrorIfLayer2Model3 <- function(hToL, sToL) {
   k <- (1 - rho1ToRho2) / (1 + rho1ToRho2)
   sum(sapply(1:1024, function(n) (k^n / n^3))) -> result
