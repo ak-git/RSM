@@ -17,7 +17,7 @@ out <- sapply(1:(length(df$TIME) / step - 1), function(x) {
 })
 
 out <- as.data.frame(t(out))
-colnames(out) <- c('TIME', 'R1', 'R1`', 'R2', 'R2`', 'POSITION', 'dh')
+colnames(out) <- c('TIME', 'R1', 'R1`', 'R2', 'R2`', 'POSITION', 'dH')
 
 par(mfrow = c(3, 1), mar = c(2, 5, 2, 1), cex = 1.0, family = 'mono', las = 1, tck = 1)
 
